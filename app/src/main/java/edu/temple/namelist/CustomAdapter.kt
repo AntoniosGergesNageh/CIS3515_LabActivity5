@@ -8,10 +8,14 @@ import android.widget.TextView
 
 class CustomAdapter(private val names: List<String>, private val context: Context) : BaseAdapter() {
 
-    // How many items are in the collection
+
+// How many items are in the collection (use dynamic size)
+// issue 2 **********
     override fun getCount(): Int {
-        return 5
+        return names.size
+        // this was by default return 5
     }
+
 
     // Fetch an item from the collection
     override fun getItem(p0: Int): Any {
@@ -30,7 +34,7 @@ class CustomAdapter(private val names: List<String>, private val context: Contex
         } else {
             TextView(context).apply {
                 textSize = 24f
-                setPadding(10,10,10,10)
+                setPadding(10, 10, 10, 10)
             }
         }.apply {
             text = getItem(p0).toString()
